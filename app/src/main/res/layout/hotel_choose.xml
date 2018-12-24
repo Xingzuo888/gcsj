@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/hotel_position_city"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:text="北京 ▼"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/hotel_input_city"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:hint="请输入城市"
+        android:layout_width="150dp"
+        android:layout_height="40dp" />
+
+    <Button
+        android:id="@+id/hotel_query"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:text="查询"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
