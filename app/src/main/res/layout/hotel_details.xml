@@ -26,6 +26,7 @@
 
                 <ImageView
                     android:id="@+id/theme_image"
+                    android:src="@drawable/hotel"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"/>
@@ -110,20 +111,23 @@
                         android:id="@+id/hotel_detail_image1"
                         android:scaleType="centerCrop"
                         android:layout_marginTop="15dp"
-                        android:layout_marginRight="15dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/timg_1"
                         android:layout_width="110dp"
                         android:layout_height="110dp" />
                     <ImageView
                         android:id="@+id/hotel_detail_image2"
                         android:scaleType="centerCrop"
                         android:layout_marginTop="15dp"
+                        android:src="@drawable/timg_2"
                         android:layout_width="110dp"
                         android:layout_height="110dp" />
                     <ImageView
                         android:id="@+id/hotel_detail_image3"
                         android:scaleType="centerCrop"
                         android:layout_marginTop="15dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/timg_3"
                         android:layout_width="110dp"
                         android:layout_height="110dp" />
                 </LinearLayout>

@@ -15,6 +15,7 @@
         <ImageView
             android:id="@+id/hotel_image"
             android:layout_margin="10dp"
+            android:src="@drawable/hotel"
             android:scaleType="centerCrop"
             android:layout_width="100dp"
             android:layout_height="100dp" />

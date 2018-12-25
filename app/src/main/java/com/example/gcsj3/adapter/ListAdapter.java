@@ -1,12 +1,11 @@
 package com.example.gcsj3.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,25 +16,41 @@ import com.example.gcsj3.gson.hotel.HotelList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2018/12/23.
+ * Created by Administrator on 2018/12/25.
  */
 
-public class ListAdapter extends ArrayAdapter<HotelList> {
+public class ListAdapter extends BaseAdapter {
+    private Context mContext;
     private int resourceId;
+    private List<HotelList> hotelLists;
 
-    public ListAdapter(Context context, int resource, List<HotelList> objects) {
-        super(context, resource, objects);
-        resourceId = resource;
+    public ListAdapter(Context mContext, int resourceId, List<HotelList> hotelLists) {
+        this.hotelLists = hotelLists;
+        this.mContext = mContext;
+        this.resourceId = resourceId;
     }
 
-    @NonNull
+    @Override
+    public int getCount() {
+        return hotelLists.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return hotelLists.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        HotelList hotelList = getItem(position);
         View view;
         ViewHolder viewHolder;
         if (convertView == null) {
-            view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+            view = LayoutInflater.from(mContext).inflate(resourceId, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.cardView = (CardView) view;
             viewHolder.hotelImage = (ImageView) view.findViewById(R.id.hotel_image);
@@ -48,11 +63,11 @@ public class ListAdapter extends ArrayAdapter<HotelList> {
             view = convertView;
             viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.hotelName.setText(hotelList.chineseName);
-        viewHolder.hotelAddress.setText(hotelList.address);
-        viewHolder.hotelStar.setText(hotelList.starName);
-        viewHolder.hotelPrice.setText("￥ "+hotelList.price);
-        Glide.with(getContext()).load(hotelList.picture).into(viewHolder.hotelImage);
+        viewHolder.hotelName.setText(hotelLists.get(position).chineseName);
+        viewHolder.hotelAddress.setText(hotelLists.get(position).address);
+        viewHolder.hotelStar.setText(hotelLists.get(position).starName);
+        viewHolder.hotelPrice.setText("￥ "+hotelLists.get(position).price);
+        Glide.with(mContext).load(hotelLists.get(position).picture).into(viewHolder.hotelImage);
         return view;
     }
 
@@ -64,5 +79,4 @@ public class ListAdapter extends ArrayAdapter<HotelList> {
         TextView hotelStar;
         TextView hotelPrice;
     }
-
 }
