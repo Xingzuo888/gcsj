@@ -3,6 +3,8 @@
 
     <version value="1"/>
     <list>
-
+        <mapping class="com.example.gcsj3.db.Province"/>
+        <mapping class="com.example.gcsj3.db.City"/>
+        <mapping class="com.example.gcsj3.db.County"/>
     </list>
 </litepal>

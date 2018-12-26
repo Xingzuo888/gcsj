@@ -49,11 +49,17 @@
         <activity android:name=".hotel.HotelDetailsperimeterActivity"/>
         <activity android:name=".hotel.HotelPictureActivity"/>
         <activity android:name=".hotel.HotelServicesActivity"/>
-
+        <activity android:name=".weather.WeatherActivity" />
+        <activity android:name=".weather.ChooseCityActivity"/>
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" />
+
+        <service
+            android:name=".service.AutoUpdateService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button;
     private TextView textView;
     private String city;
+    private String province;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, HotelActivity.class);
-                intent.putExtra("cityname",city);
+                intent.putExtra("province",province);
+                intent.putExtra("city",city);
                 startActivity(intent);
             }
         });
@@ -76,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
     //初始化定位的配置
     private void initLocation() {
         LocationClientOption option = new LocationClientOption();
-
         option.setIsNeedAddress(true);
         mLocationClient.setLocOption(option);
     }
@@ -135,6 +136,9 @@ public class MainActivity extends AppCompatActivity {
             Log.d("jjjjjjjjjjjjjjj",""+bdLocation.getProvince());
             Log.d("jjjjjjjjjjjjjjj",""+bdLocation.getCity());
 
+            province = bdLocation.getProvince();
+            province = province.split("省")[0];
+            Log.d("JJJJJJJJJJJJJJJJ",province);
             city = bdLocation.getCity();
             city = city.split("市")[0];
             Log.d("jjjjjjjjjjjjjjj",city);

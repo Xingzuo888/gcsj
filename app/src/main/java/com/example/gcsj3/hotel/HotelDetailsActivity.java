@@ -114,7 +114,7 @@ public class HotelDetailsActivity extends AppCompatActivity implements View.OnCl
     private void requestHotelDetails(String hotelid) {
         String url = "http://route.showapi.com/1653-3?showapi_appid=" + showapi_appid +
                 "&showapi_sign=" + showapi_sign + "&hotelId=" + hotelid;
-        HttpUtil.SendOkHttpRequest(url, new Callback() {
+        HttpUtil.sendOkHttpRequest(url, new Callback() {
             @Override
             public void onFailure(Call call, final IOException e) {
                 runOnUiThread(new Runnable() {
