@@ -1,7 +1,5 @@
 package com.example.gcsj3.tianActivity.SQL;
 
-import android.util.Log;
-
 import com.example.gcsj3.tianActivity.bean.User;
 
 import org.json.JSONArray;
@@ -66,9 +64,7 @@ public class dealJson {
          for (int i = 0; i < jsonArray.length(); i++){
             User user = new User();
             JSONObject jsonObject = jsonArray.getJSONObject(i);
-            Log.i("MainSQL", jsonObject.toString());
             if (jsonObject.has("idcard")){
-               Log.i("MainSQL", "data" + jsonObject.getString("idcard"));
                user.setIdcard(jsonObject.getString("idcard"));
             }
             if (jsonObject.has("username")){
@@ -96,12 +92,11 @@ public class dealJson {
    }
 
    public boolean addUser(String user) {
-      Log.i("MainDeal update", user);
       if (user.trim().equals("true"))
       {
-         Log.i("MainDeal update", "true");
          return true;
       }
       return false;
    }
 }
+//处理json数据

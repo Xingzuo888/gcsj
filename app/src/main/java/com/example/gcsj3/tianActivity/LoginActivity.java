@@ -29,18 +29,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         public void handleMessage(Message msg) {
             if (msg.what == 100){//根据用户名查找用户
                 Bundle bundle = msg.getData();
+                int i = 0;//判断是否正确登录
                 String account = bundle.getString("account");
+                String pwd = bundle.getString("pwd");
                 List<User> userList = (List<User>) msg.obj;
                 for (User user:userList){
-                    if (user.getUsername().equals(account)){
-                        Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent();
-                        intent.setAction("hideLogin");
-                        sendBroadcast(intent);
-                        finish();
+                    if (user.getUsername().equals(account) && user.getPwd().equals(pwd)){
+                        i = 1;
                     }
                 }
-                Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+                if (i == 1){
+                    Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    intent.setAction("hideLogin");
+                    sendBroadcast(intent);
+                    finish();
+                }else{
+                    Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         }
     };
@@ -52,8 +60,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         init();
     }
     public void init(){
-        zuce = (Button) findViewById(R.id.zuce);
-        zuce.setOnClickListener(this);
+        zuce = (Button) findViewById(R.id.zuce);//变量初始化
+        zuce.setOnClickListener(this);//设置监听
         login = (Button) findViewById(R.id.login);
         login.setOnClickListener(this);
         account = (EditText) findViewById(R.id.account);
@@ -69,7 +77,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()){
             case R.id.zuce:
                 Intent intentZC = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivityForResult(intentZC, 1);
+                startActivityForResult(intentZC, 1);//
                 //点击注册后的操作
                 break;
             case R.id.login:
@@ -97,12 +105,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }else{
             new Thread(new Runnable() {
                 @Override
-                public void run() {//进行耗时操作
+                public void run() {//进行耗时操作。开始一个线程
                     Message msg = new Message();
                     msg.what = 100;
                     List<User> userList = SqlFactory.getSql().findByName(accountString);
                     Bundle bundle = new Bundle();
                     bundle.putString("account", accountString);
+                    bundle.putString("pwd", pwdString);
                     msg.setData(bundle);
                     msg.obj = userList;
                     mHandler.sendMessage(msg);

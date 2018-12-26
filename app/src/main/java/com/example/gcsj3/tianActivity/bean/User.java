@@ -29,3 +29,4 @@ public class User {
         this.pwd = pwd;
     }
 }
+//设置得到的数据，

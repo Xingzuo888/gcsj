@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,13 +26,11 @@ import okhttp3.Response;
 public class MyAdapterScenic extends BaseAdapter {
     private Context myContext;
     private List<ResultBean> datas;
-    private Handler handler;
     private LayoutInflater myInflater;
 
-    public MyAdapterScenic(Context context, List<ResultBean> datas, Handler handler){
+    public MyAdapterScenic(Context context, List<ResultBean> datas){
         this.myContext = context;
         this.datas = datas;
-        this.handler = handler;
         myInflater = LayoutInflater.from(context);
     }
     @Override

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,7 +18,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.baidu.mapapi.map.MyLocationData;
 import com.example.gcsj3.R;
 import com.example.gcsj3.adapter.ListAdapter;
 import com.example.gcsj3.gson.hotel.HotelList;
@@ -134,6 +132,7 @@ public class HotelActivity extends AppCompatActivity implements View.OnClickList
                             editor.putString("showapihotel",responseContent);
                             editor.apply();
                             hotelPositionCityButton.setText(showapiResBodyHotel1.cityName+" ▼");
+                            hotelInputCityEditText.setHint(showapiResBodyHotel1.cityName);
                             adapter = new ListAdapter(HotelActivity.this,R.layout.hotel_card,showapiResBodyHotel1.hotelData.hotelLists);
                             listView.setAdapter(adapter);
                             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

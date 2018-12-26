@@ -91,6 +91,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.spot:
                 Intent intent = new Intent(MainActivity.this, Scenic_Spot.class);
+                intent.putExtra("province",province);
+                intent.putExtra("city",city);
                 startActivity(intent);
                 break;
             case R.id.Hotel:

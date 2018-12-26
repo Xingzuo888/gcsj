@@ -1,6 +1,7 @@
 package com.example.gcsj3.util;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.example.gcsj3.db.City;
 import com.example.gcsj3.db.County;
@@ -124,9 +125,12 @@ public class Utility { //该类用来处理返回的数据
      */
     public static Weather handleWeatherResponse(String response) {
         try{
+            Log.i("Main_Utility", response);
             JSONObject jsonObject = new JSONObject(response);
+            Log.i("Main_Utility", jsonObject.toString());
             JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
             String weatherContent = jsonArray.getJSONObject(0).toString();
+            Log.i("Main_Utility", weatherContent);
             return new Gson().fromJson(weatherContent,Weather.class);
         } catch (Exception e) {
             e.printStackTrace();
