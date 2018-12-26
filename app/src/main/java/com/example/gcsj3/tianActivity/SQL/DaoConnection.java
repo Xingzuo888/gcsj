@@ -10,8 +10,9 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 public class DaoConnection {
+    public static String ip = "http://192.168.137.1:8090/";
     public String findAll(){
-        String url = "http://169.254.58.127:8090/getAllUser";
+        String url = ip + "getAllUser";
         String content = null;
         try {
             HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
@@ -29,7 +30,7 @@ public class DaoConnection {
         return content;
     }
     public String findById(String id){
-        String url = "http://169.254.58.127:8090/findByid";
+        String url = ip + "findByid";
         String content = null;
         try {
             String data = "id=" + URLEncoder.encode(id, "utf-8");
@@ -52,7 +53,7 @@ public class DaoConnection {
         return content;
     }
     public String findByName(String name){
-        String url = "http://169.254.58.127:8090/findByName";
+        String url = ip + "findByName";
         String content = null;
         try {
             String data = "name=" + URLEncoder.encode(name, "utf-8");
@@ -77,7 +78,7 @@ public class DaoConnection {
     public String updatePwd(User user){
         String id = user.getIdcard();
         String pwd = user.getPwd();
-        String url = "http://169.254.58.127:8090/updatePwd";
+        String url = ip + "updatePwd";
         String content = null;
         try {
             String data = "id=" + URLEncoder.encode(id, "utf-8") + "&pwd=" + URLEncoder.encode(pwd, "utf-8");
@@ -103,7 +104,7 @@ public class DaoConnection {
         String name = user.getUsername();
         String id = user.getIdcard();
         String pwd = user.getPwd();
-        String url = "http://169.254.58.127:8090/addUser";
+        String url = ip + "addUser";
         String content = null;
         try {
             String data = "name=" + URLEncoder.encode(name, "utf-8") + "&id=" + URLEncoder.encode(id, "utf-8") + "&pwd=" + URLEncoder.encode(pwd, "utf-8");
