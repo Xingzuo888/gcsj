@@ -1,8 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <litepal>
     <dbname value="gcsj"/>
 
-    <version value="1"/>
+    <version value="3"/>
     <list>
-        
+        <mapping class="com.example.gcsj3.Bean.ResultBean"/>
+        <mapping class="com.example.gcsj3.Bean.DetailShowapiResBodyBean"/>
     </list>
 </litepal>

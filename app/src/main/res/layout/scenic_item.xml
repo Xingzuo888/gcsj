@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scenic_layout"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/scenicId"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" />
+    <ImageView
+        android:id="@+id/scenic_item_image"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:src="@drawable/scenic"/>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/scenic_item_name"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:lines="1"
+                android:ellipsize="end"
+                android:layout_height="match_parent"
+                android:text="云南石林风景名胜区" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:text="价格:"/>
+            <TextView
+                android:id="@+id/scenic_item_price"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="129"
+                android:textColor="#EE5C42"/>
+            <TextView
+                android:layout_width="65dp"
+                android:layout_height="match_parent"
+                android:text="开放时间:"/>
+            <TextView
+                android:id="@+id/scenic_item_time"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="07:30-18:30"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:id="@+id/scenic_item_addre"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="云南省昆明市石林彝族自治县石林景区"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

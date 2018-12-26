@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_scenic__spot"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gcsj3.TangyActivity.Scenic_Spot">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ABABAB">
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:padding="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/home"/>
+        <TextView
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="景点"
+            android:textSize="15sp"
+            android:textColor="#FFFF"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#ABABAB">
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+        <Button
+            android:gravity="center"
+            android:id="@+id/city_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="昆明" />
+        <EditText
+            android:id="@+id/input_city"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="请输入城市" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="查询"
+            android:onClick="findCityScenic"/>
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/scenic_ListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+</LinearLayout>
