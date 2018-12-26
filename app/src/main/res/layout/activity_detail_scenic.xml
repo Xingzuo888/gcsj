@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_detail_scenic"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gcsj3.TangyActivity.DetailScenic">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="160dp">
+        <ImageView
+            android:id="@+id/scenicDetail_image"
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/scenic"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/scenicDetail_name"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="云南名族村"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textColor="#FF6666"
+                android:textSize="30sp"/>
+            <TextView
+                android:id="@+id/scenicDetail_city"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textColor="#FF6666"
+                android:text="昆明"
+                android:textSize="25sp"/>
+            <TextView
+                android:id="@+id/scenicDetail_addr"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textColor="#FF6666"
+                android:lines="2"
+                android:ellipsize="end"
+                android:text="盘龙区鸣凤山上穿金路"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/scenicDetail_time"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textColor="#FF6666"
+                android:text="08:30-17:00"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/scenicDetail_traffic"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textSize="17sp"
+        android:textColor="#000000"
+        android:text="公交：昆明站乘44、73路公交车，或A1路公交车\n自驾：昆明站——春城路——日新路——日新东路——前兴路——广福路——红塔东路——滇池路——终点"/>
+    <TextView
+        android:id="@+id/scenicDetail_recommend"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textSize="17sp"
+        android:textColor="#000000"
+        android:text="其间有绿荫小径，亭阁回廊、拱桥石阶相衔相接，并与滇池湖滨大道首尾贯通。 集云南主要的彝、白、傣、苗、景颇、佤等25个少数民族的村寨。 周围自然的景观和得天独厚的天然调节，每一刻，每一季，都有各自动人的美景。  "/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/scenicDetail_description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="17sp"
+            android:textColor="#000000"
+            android:text="云南民族村位于滇池北岸的海埂，是一条由东向西仲入滇池的狭长的半岛沙滩，俗称“海埂”。其占地面积2万亩，有天然的游浴场和体育训练基地，为消夏娱乐度假的好地方。它与西山森林公园、大观公园、郑和公园等风景名胜区隔水相望。有索道连接西山龙门，组成了民族村至西山风景区的旅游环路。近来为发展旅游，先后建起了云南民族村和云南民族博物馆。"/>
+    </ScrollView>
+
+</LinearLayout>

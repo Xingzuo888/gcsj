@@ -70,7 +70,7 @@ public class HotelActivity extends AppCompatActivity implements View.OnClickList
         weatherText.setOnClickListener(this);
 
         cityName = getIntent().getStringExtra("city");
-        hotelPositionCityButton.setText(cityName);
+        hotelPositionCityButton.setText(cityName+" ▼");
         weatherText.setText(cityName + "-天气");
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(HotelActivity.this);

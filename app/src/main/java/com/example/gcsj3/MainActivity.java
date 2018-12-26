@@ -1,36 +1,48 @@
 package com.example.gcsj3;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.example.gcsj3.TangyActivity.Scenic_Spot;
 import com.example.gcsj3.hotel.HotelActivity;
+import com.example.gcsj3.tianActivity.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public LocationClient mLocationClient;
-    private Button button;
-    private TextView textView;
     private String city;
     private String province;
-
+    private Button spot = null;
+    private Button hotel = null;
+    private ImageButton loginButton = null;
+    private BroadcastReceiver mBrodcaseReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals("hideLogin")){
+                loginButton.setVisibility(View.GONE);
+            }
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,17 +68,45 @@ public class MainActivity extends AppCompatActivity {
         }else {
             requestLocation();
         }
-        textView = (TextView) findViewById(R.id.ttt);
-        button = (Button) findViewById(R.id.bb);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, HotelActivity.class);
-                intent.putExtra("province",province);
-                intent.putExtra("city",city);
+
+        init();
+        //注册广播接收登录成功
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("hideLogin");
+        registerReceiver(mBrodcaseReceiver, filter);
+
+    }
+
+    public void init(){
+        spot = (Button) findViewById(R.id.spot);
+        spot.setOnClickListener(this);
+        hotel = (Button) findViewById(R.id.Hotel);
+        hotel.setOnClickListener(this);
+        loginButton = (ImageButton) findViewById(R.id.loginButton);
+        loginButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.spot:
+                Intent intent = new Intent(MainActivity.this, Scenic_Spot.class);
                 startActivity(intent);
-            }
-        });
+                break;
+            case R.id.Hotel:
+                //跳转到酒店
+                Intent intent2 = new Intent(MainActivity.this, HotelActivity.class);
+                intent2.putExtra("province",province);
+                intent2.putExtra("city",city);
+                startActivity(intent2);
+                break;
+            case R.id.loginButton:
+                Intent intent1 = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent1);
+                break;
+            default:
+                break;
+        }
     }
 
     //启动定位
@@ -103,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        unregisterReceiver(mBrodcaseReceiver);
         //停止定位
         mLocationClient.stop();
     }
@@ -113,35 +154,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onReceiveLocation(BDLocation bdLocation) {
 
-            StringBuilder currentPosition = new StringBuilder();
-                    currentPosition.append("纬度：").append(bdLocation.getLatitude()).append("\n");
-                    currentPosition.append("经度：").append(bdLocation.getLongitude()).append("\n");
-                    currentPosition.append("国家：").append(bdLocation.getCountry()).append("\n");
-                    currentPosition.append("省：").append(bdLocation.getProvince()).append("\n");
-                    currentPosition.append("市：").append(bdLocation.getCity()).append("\n");
-                    currentPosition.append("区：").append(bdLocation.getDistrict()).append("\n");
-                    currentPosition.append("街道：").append(bdLocation.getStreet()).append("\n");
-                    currentPosition.append("定位方式：");
-                    if (bdLocation.getLocType() == BDLocation.TypeGpsLocation) {
-                        currentPosition.append("GPS");
-                    } else if (bdLocation.getLocType() == BDLocation.TypeNetWorkLocation) {
-                        currentPosition.append("网络");
-                    }
-                    textView.setText(currentPosition);
-
-
-            Log.d("jjjjjjjjjjjjjjj", String.valueOf(bdLocation.getLatitude()));
-            Log.d("jjjjjjjjjjjjjjj", String.valueOf(bdLocation.getLongitude()));
-            Log.d("jjjjjjjjjjjjjjj",""+bdLocation.getCountry());
-            Log.d("jjjjjjjjjjjjjjj",""+bdLocation.getProvince());
-            Log.d("jjjjjjjjjjjjjjj",""+bdLocation.getCity());
-
             province = bdLocation.getProvince();
             province = province.split("省")[0];
-            Log.d("JJJJJJJJJJJJJJJJ",province);
             city = bdLocation.getCity();
             city = city.split("市")[0];
-            Log.d("jjjjjjjjjjjjjjj",city);
 
         }
     }
